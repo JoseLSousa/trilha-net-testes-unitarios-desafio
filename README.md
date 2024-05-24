@@ -1,81 +1,66 @@
-# DIO - Trilha .NET - Testes Unitários com C#
-www.dio.me
+# Testes Unitários - Desafio
 
-## Desafio de projeto
-Para este desafio, você precisará usar seus conhecimentos adquiridos no módulo de Testes Unitários com C#, da trilha .NET da DIO.
+Este repositório contém testes unitários para as classes `ValidacoesString` e `ValidacoesLista` do Desafio.
 
-## Contexto
-Você está trabalhando em um sistema, e seus gestores relataram que frequentemente há problemas no software: bugs, funcionalidades que estavam funcionando de repente não funcionam mais, problemas de validações, entre outros. Os clientes já começam a duvidar da qualidade do código.
+## Estrutura dos Testes
 
-Feito isso, você sugeriu a implementação de testes unitários: escrever testes cobrindo as partes mais críticas do sistema, com cenários positivos e negativos, a fim de ter uma rastreabilidade e controle do código, melhorando assim a qualidade desse sistema.
+### ValidacoesStringTests
 
-Os gestores aceitaram a sua ideia, e com isso, você precisa implementar testes unitários no sistema.
+Esta classe contém testes para validar operações relacionadas a strings.
 
-## Premissas
-O sistema hoje possui dois projetos: um do tipo console, e um do tipo testes com **xUnit**. O projeto do tipo console possui duas classes em que são realizadas as lógicas principais: **ValidacoesLista** e **ValidacoesString**. Essas classes contém métodos em comum que são usados para realizar diversas validações em determinados cenários.
+#### DeveRetornar6QuantidadeCaracteresDaPalavraMatrix
 
-O projeto de testes possui as classes de teste **ValidacoesListaTests** e **ValidacoesStringTests**, assim como seus métodos para validar o projeto do tipo console, porém estão incompletos. 
+Testa o método `RetornarQuantidadeCaracteres` para verificar se retorna corretamente a quantidade de caracteres de uma palavra.
 
-O seu objetivo é implementar os métodos de testes contidos no projeto.
+#### DeveContemAPalavraQualquerNoTexto
 
-## Projeto Console, suas classes e métodos
+Verifica se o método `ContemCaractere` retorna verdadeiro quando a palavra procurada está presente no texto.
 
-Essas são as classes do projeto console, onde fica a principal lógica do sistema.
+#### NaoDeveConterAPalavraTesteNoTexto
 
-**Classe ValidaçõesLista**
+Testa se o método `ContemCaractere` retorna falso quando a palavra procurada não está presente no texto.
 
-Classe responsável por realizar diversas validações envolvendo listas.
+#### TextoDeveTerminarComAPalavraProcurado
 
-| Classe          | Método                       | Objetivo                                                                                                                |
-|---------------- |------------------------------|-------------------------------------------------------------------------------------------------------------------------|
-| ValidacoesLista | RemoverNumerosNegativos      | Recebe uma lista de números inteiros e retorna uma nova lista, apenas com os números positivos                          |
-| ValidacoesLista | ListaContemDeterminadoNumero | Recebe uma lista de números inteiros e verifica se um determinado número está presente dentro dessa lista               |
-| ValidacoesLista | MultiplicarNumerosLista      | Recebe uma lista de números inteiros e retorna uma nova lista, com seus valores múltiplicados por um determinado número |
-| ValidacoesLista | RetornarMaiorNumeroLista     | Recebe uma lista de números inteiros e retorna o maior número entre eles                                                |
-| ValidacoesLista | RetornarMenorNumeroLista     | Recebe uma lista de números inteiros e retorna o menor número entre eles                                                |
+Verifica se o método `TextoTerminaCom` retorna verdadeiro quando o texto termina com a palavra procurada.
 
-**Classe ValidacoesString**
+## ValidacoesListaTests
 
-Classe responsável por realizar diversas validações envolvendo strings.
+Esta classe contém testes para validar operações relacionadas a listas de números inteiros.
 
-| Classe           | Método                       | Objetivo                                                                                                                
-|------------------|------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ValidacoesString | RetornarQuantidadeCaracteres | Recebe um texto qualquer e retorna a quantidade de caracteres presentes no texto                                                                           |
-| ValidacoesString | ContemCaractere              | Recebe um texto qualquer e um texto a ser procurado, retorna verdadeiro ou falso se um determinado trecho procurado está presente no texto                 |
-| ValidacoesString | TextoTerminaCom              | Recebe um texto qualquer e um trecho a ser procurado, retorna verdadeiro ou falso se um determinado trecho procurado está presente no final do texto apenas |
+#### DeveRemoverNumerosNegativosDeUmaLista
 
-## Projeto do tipo teste, suas classes e métodos
+Testa o método `RemoverNumerosNegativos` para garantir que remove corretamente os números negativos de uma lista.
 
-**Classe ValidacoesListaTests**
+#### DeveConterONumero9NaLista
 
-Classe responsável por realizar os testes da classe ValidacoesLista.
+Verifica se o método `ListaContemDeterminadoNumero` retorna verdadeiro quando o número procurado está presente na lista.
 
-| Classe               | Método de teste                               | Resultado esperado do teste
-|----------------------|-----------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------|
-| ValidacoesListaTests | DeveRemoverNumerosNegativosDeUmaLista         | Ao passar uma lista com diversos números, incluindo positivos e negativos, deve ser retornado uma nova lista apenas com números positivos  |
-| ValidacoesListaTests | DeveConterONumero9NaLista                     | Ao passar uma lista com diversos números, incluindo o número 9, deve retornar verdadeiro, pois encontrou o 9 na lista                      |
-| ValidacoesListaTests | NaoDeveConterONumero10NaLista                 | Ao passar uma lista com diversos números, mas sem o número 10, deve retornar falso, pois não encontrou o 10 na lista                       |
-| ValidacoesListaTests | DeveMultiplicarOsElementosDaListaPor2         | Ao passar uma lista de inteiros, deve retornar uma nova lista, com todos os elementos da lista multiplicados por 2                         |
-| ValidacoesListaTests | DeveRetornar9ComoMaiorNumeroDaLista           | Ao passar uma lista de números inteiros, sendo o maior deles 9, deve retornar o 9 como maior elemento dentro dessa lista                   |
-| ValidacoesListaTests | DeveRetornarOitoNegativoComoMenorNumeroDaList | Ao passar uma lista de números inteiros, sendo o menor deles -8, deve retornar o -8 como menor elemento dentro dessa lista                 |
+#### NaoDeveConterONumero10NaLista
 
-**Classe ValidacoesStringTests**
+Testa se o método `RemoverNumerosNegativos` não contém o número especificado após a remoção dos negativos.
 
-Classe responsável por realizar os testes da classe ValidacoesString.
+#### DeveMultiplicarOsElementosDaListaPor2
 
-| Classe                | Método de teste                                  | Resultado esperado do teste
-|---------------------- |--------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| ValidacoesStringTests | DeveRetornar6QuantidadeCaracteresDaPalavraMatrix | Ao passar um texto escrito a palavra "Matrix", deve retornar o número 6, representando 6 caracteres presentes na palavra                                                                         |
-| ValidacoesStringTests | DeveContemAPalavraQualquerNoTexto                | Ao passar um texto escrito "Esse é um texto qualquer" e procurar pela palavra "qualquer", deve retornar verdadeiro pois a palavra existe no texto                                                |
-| ValidacoesStringTests | NaoDeveConterAPalavraTesteNoTexto                | Ao passar um texto escrito "Esse é um texto qualquer" e procurar pela palavra "teste", deve retornar falso pois a palavra não existe no texto                                                    |
-| ValidacoesStringTests | TextoDeveTerminarComAPalavraProcurado            | Ao passar um texto escrito "Começo, meio e fim do texto procurado" e procurar pela palavra "procurado", deve retornar verdadeiro pois a palavra existe no texto e está inclusa no final do texto |
+Verifica se o método `MultiplicarNumerosLista` multiplica corretamente todos os elementos da lista por um número fornecido.
 
-## Estrutura do projeto
+#### DeveRetornar9ComoMaiorNumeroDaLista
 
-O projeto está estruturado da seguinte maneira:
+Testa se o método `RetornarMaiorNumeroLista` retorna corretamente o maior número da lista.
 
-![Métodos Swagger](Imagens/projeto.png)
+#### DeveRetornarOitoNegativoComoMenorNumeroDaLista
 
+Verifica se o método `RetornarMenorNumeroLista` retorna corretamente o menor número negativo da lista.
 
-## Solução
-O código de testes está pela metade, e você deverá dar continuidade implementando os testes descritos acima, para que no final, tenhamos um programa de testes funcional. Procure pela palavra comentada "TODO" no código, em seguida, implemente conforme as regras acima.
+## Como Executar os Testes
+
+Para executar os testes, certifique-se de ter um ambiente configurado com um framework de testes compatível com C# (por exemplo, xUnit, NUnit, MSTest).
+
+1. Clone este repositório para sua máquina local.
+2. Abra o projeto no ambiente de desenvolvimento de sua escolha (Visual Studio, Visual Studio Code, etc.).
+3. Execute os testes utilizando o runner de testes integrado ou através da linha de comando, dependendo do seu ambiente de desenvolvimento.
+
+Exemplo de comando para rodar os testes com dotnet CLI:
+
+```bash
+dotnet test
